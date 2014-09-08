@@ -1,4 +1,4 @@
-# Remember Tracks
+# Remember Tunes
 ### Connect your memory, location and tracks.
 - **This is a test angularjs app for personal learning**
 - **Still not deplyed anywhere.**
