@@ -1,7 +1,5 @@
 'use strict'
 
-console.log('revert me');
-
 //module definition
 var app = angular.module('app', ['angular-loading-bar']).config(
   [
