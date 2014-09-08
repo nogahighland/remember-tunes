@@ -18,7 +18,7 @@
           <span class="input-group-addon"> </span>
           <input type="text" class="form-control" ng-model="query" ng-change="search()" placeholder="track name">
         </div>
-        <span class="glyphicon glyphicon-star-empty"></span>:{{starred}}
+        <span class="glyphicon glyphicon-star-empty"></span>:{{getStarredCount()}}
         <h2>Search Results</h2>
         <p ng-show="isInitialized()">Input query above.</p>
         <p ng-show="!results.length && query">No results for "{{query}}"</p>

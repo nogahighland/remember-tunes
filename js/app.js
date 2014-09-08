@@ -1,3 +1,5 @@
+'use strict'
+
 //module definition
 var app = angular.module('app', ['angular-loading-bar']).config(
   [
@@ -10,6 +12,7 @@ var app = angular.module('app', ['angular-loading-bar']).config(
 
 //overall controll
 app.controller('appCtrl', function($scope, $http) {
+    $scope.starred = [];
     var apiBase = "https://itunes.apple.com/search?attribute=songTerm&country=JP&media=music&callback=JSON_CALLBACK&term=";
     $scope.search = _.throttle(function() {
       if (!$scope.query) {
@@ -18,23 +21,37 @@ app.controller('appCtrl', function($scope, $http) {
       }
       var query = apiBase + encodeURIComponent($scope.query);
       $http.jsonp(query).success(function(data) {
-        //TODO if already starred, set attribute as starred.
         $scope.results = data.results;
+        _.forEach($scope.results, function(track) {
+          if (_.contains($scope.starred, track.trackId)) {
+            track.isStarred = true;
+          }
+        });
       });
     }, 1000);
-    $scope.addStar = function(num){
+    $scope.addStar = function(addId){
       //TODO sync to server.
-      $scope.starred+=num;
+      $scope.starred.push(addId);
+      $scope.starred = _.uniq($scope.starred);
+    }
+    $scope.removeStar = function(removeId){
+      //TODO sync to server.
+      _.remove($scope.starred, function(starredId) {
+        return starredId == removeId
+      });
     }
     $scope.stopAll = function() {
-      angular.forEach($scope.results, function(result) {
+      _.forEach($scope.results, function(result) {
         result.isPlaying = false;
       });
     }
     $scope.isInitialized = function() {
       return !$scope.query && (!$scope.results || !$scope.results.length)
     }
-    $scope.starred=0; //TODO fetch & count starred tracks.
+    $scope.getStarredCount = function() {
+      //TODO fetch & count starred tracks.
+      return $scope.starred.length;
+    }
 });
 
 //control per track. belongs to appCtrl
@@ -51,12 +68,14 @@ app.controller('trackCtrl', function($scope, $http, $sce) {
     track.isPlaying = false;
   }
   $scope.star = function() {
-    this.$parent.addStar(1);
+    var track = this.$parent.result;    
+    this.$parent.addStar(track.trackId);
     //TODO save to server
-    this.$parent.result.isStarred = true;
+    track.isStarred = true;
   }
   $scope.unStar = function() {
-    this.$parent.addStar(-1);
+    var track = this.$parent.result;
+    this.$parent.removeStar(track.trackId);
     //TODO remove from server
     this.$parent.result.isStarred = false;
   }
