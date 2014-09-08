@@ -1,0 +1,56 @@
+<div ng-show="isSearchView()">
+  <div class="input-group">
+    <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+    <input type="text" class="form-control" ng-model="query" ng-change="search()" placeholder="track name" value="">
+  </div>
+  <span class="glyphicon glyphicon-star-empty"></span>:{{getStarredCount()}}
+  <h2>Search Results</h2>
+  <p ng-show="isInitialized()">Input query above.</p>
+  <p ng-show="!results.length && query">No results for "{{query}}"</p>
+</div>
+<div ng-hide="isSearchView()">
+  <h2>Starred Tracks</h2>
+</div>
+<p ng-show="{{!isSearchView() && !getResult().length}}">Find your favourites in Seach panel!</p>
+
+<div id="search-result">
+  <ul ng-show="results.length" class="media-list">
+    <li ng-repeat="result in getTracks()" ng-controller="TrackCtrl" class="media">
+      <a class="pull-left">
+        <div style="width:100px; height:100px;">
+          <img class="media-object" ng-src="{{result.artworkUrl100}}" alt="{{result.trackName}}">
+        </div>
+      </a>
+      <div id="media-body">
+        <h4 class="media-heading" style="text-overflow:ellipsis;">{{result.trackName}}</h4>
+        <p style="text-overflow:ellipsis;">by {{result.artistName}}</p>
+
+        <div class="track-control">
+          <!-- player -->
+          <button type="button" ng-click="play()" ng-hide="result.isPlaying" class="btn btn-default">
+            <span class="glyphicon glyphicon-headphones"></span>
+          </button>
+          <button type="button" ng-click="stop()" ng-show="result.isPlaying" class="btn btn-default">
+            <span class="glyphicon glyphicon-stop"></span>
+          </button>
+          <!-- invisible -->
+          <audio src="{{trustSrc(result.isPlaying ? result.previewUrl : '')}}" autoplay></audio>
+
+          <!-- star -->
+          <button type="button" ng-click="star()" ng-hide="result.isStarred" class="btn btn-default">
+            <span class="glyphicon glyphicon-star-empty"></span>
+          </button>
+          <button type="button" ng-click="unStar()" ng-show="result.isStarred" class="btn btn-default">
+            <span class="glyphicon glyphicon-star"></span>
+          </button>
+          <span ng-show="result.isPlaying">
+            <span class="glyphicon glyphicon-volume-up" ></span>
+            <span class="badge">Now Playing</span>
+          </span>
+        </div>
+        <p style="font-size:x-small" ng-show="result.address">starred at {{result.address}}</p>
+      </div>
+    </li>
+  </ul>
+
+</div>
