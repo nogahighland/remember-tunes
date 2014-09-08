@@ -15,7 +15,7 @@
   - Latest Node.js, bower, grunt is installed.
 
 ```
-$ git clone https://github.com/nogahighland/remember-tunes
+$ git clone git://github.com/nogahighland/remember-tunes
 $ bower install
 $ grunt
 Running "connect:server" (connect) task
