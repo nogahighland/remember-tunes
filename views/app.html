@@ -2,7 +2,7 @@
   <div ng-show="isSearchView()">
     <div class="input-group">
       <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
-      <input type="text" class="form-control" ng-model="query" ng-change="search()" placeholder="track name" value="">
+      <input type="text" class="form-control" ng-model="query" ng-change="search()" placeholder="track name, artist name, album name..." value="">
     </div>
     <span class="glyphicon glyphicon-star-empty"></span>:{{getStarredCount()}}
     <h2>Search Results</h2>
@@ -15,7 +15,7 @@
   <p ng-show="{{!isSearchView() && !getResult().length}}">Find your favourites in Seach panel!</p>
 
   <div id="search-result">
-    <ul ng-show="results.length" class="media-list">
+    <ul ng-show="getTracks().length" class="media-list">
       <li ng-repeat="result in getTracks()" ng-controller="TrackCtrl" class="media">
         <a class="pull-left">
           <div style="width:100px; height:100px;">
