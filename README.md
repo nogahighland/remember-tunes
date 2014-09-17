@@ -16,11 +16,10 @@
 ### Build
 - Precondition
   - Latest Node.js, bower, grunt is installed.
-
 ``` shell
 $ git clone git://github.com/nogahighland/remember-tunes
 $ bower install
-$ npm install grunt-contrib-connect --save-dev
+$ npm install
 $ grunt
 Running "connect:server" (connect) task
 Waiting forever...
