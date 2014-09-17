@@ -1,20 +1,23 @@
 # Remember Tunes
 ### Connect your memory, location and tracks.
-- **This is a test angularjs app for personal learning**
-- **Still not deplyed anywhere.**
-- Use this app where you want to save the track when you happen to be reminded of.
-  - Search music by artist name, album name, anything. Find what you are looking for.
-  - Tap the headphone icon to confirm the track is what you are reminded of.
-  - If the music is all right, tap star icon.
-  - The track is saved to localstorage with the current position.
+![Search View](https://github.com/nogahighland/remember-tunes/images/search-view.png)
+![Starred List View](https://github.com/nogahighland/remember-tunes/images/starred-list-view.png)
+
+- **This is a test AngularJs app for personal learning**
+- **Still not deployed anywhere.**
+- This app is usable when you want to save a track when you happen to be reminded of.
+  - Search music by artist name, album name, anything. Find the music are looking for.
+  - To confirm the track is correct, just tap the headphone icon and listen to the preview
+    - This does not work on smartphones.
+  - If the music is all right, tap star icon. It will be saved to localstorage with your current geographical position.
     - Will be stored on server(some day)
-  - Style is not perfect, sorry...
+  - Style is not still perfect, sorry...
 
 ### Build
 - Precondition
   - Latest Node.js, bower, grunt is installed.
 
-```shell
+``` shell
 $ git clone git://github.com/nogahighland/remember-tunes
 $ bower install
 $ npm install grunt-contrib-connect --save-dev
