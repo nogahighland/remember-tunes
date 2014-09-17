@@ -17,7 +17,7 @@
 - Precondition
   - Latest Node.js, bower, grunt is installed.
 ``` shell
-$ git clone git://github.com/nogahighland/remember-tunes
+$ git clone git://github.com/nogahighland/remember-tunes && cd remember-tunes
 $ bower install
 $ npm install
 $ grunt
