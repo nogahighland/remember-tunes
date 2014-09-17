@@ -1,7 +1,7 @@
 # Remember Tunes
 ### Connect your memory, location and tracks.
-![Search View](https://github.com/nogahighland/remember-tunes/images/search-view.png)
-![Starred List View](https://github.com/nogahighland/remember-tunes/images/starred-list-view.png)
+![Search View](https://raw.githubusercontent.com/nogahighland/remember-tunes/master/images/search-view.png)
+![Starred List View](https://github.com/nogahighland/remember-tunes/blob/master/images/starred-list-view.png)
 
 - **This is a test AngularJs app for personal learning**
 - **Still not deployed anywhere.**
