@@ -1,6 +1,5 @@
 'use strict';
 
-// liveReloadで使う変数とか処理を定義
 var
     LIVE_RELOAD_PORT = 35729,
     lrSnippet = require('connect-livereload')({port: LIVE_RELOAD_PORT}),
@@ -8,10 +7,8 @@ var
         return connect.static(require('path').resolve(dir));
     }
 
-// Gruntの内容を定義
 module.exports = function(grunt) {
 
-    // 必要なモジュール読み込み
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-open');
@@ -19,7 +16,6 @@ module.exports = function(grunt) {
     grunt.initConfig({
         watch: {
             options: {
-                // このオプションを付けることで、liveReloadが出来ます
                 livereload: LIVE_RELOAD_PORT
             },
             html: {
@@ -28,7 +24,7 @@ module.exports = function(grunt) {
             },
             css: {
                 files: ['./**/*.css'],
-                tasks: [''] // もしCompassなどのタスクがあればここに追加する。
+                tasks: ['']
             },
         },
         connect: {
