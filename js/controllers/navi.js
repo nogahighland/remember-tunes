@@ -6,7 +6,7 @@ angular.module('app').controller('AppNaviCtrl', function($scope, $location) {
       $location.path('/starred');
     },
     moveToSearch : function($event) {
-      $location.path('/search');
+      $location.path('/');
     },
   });
 });

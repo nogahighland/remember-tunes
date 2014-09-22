@@ -12,7 +12,7 @@ app.config(function($routeProvider) {
     .when('/', {
       templateUrl: 'views/app.html',
     })
-    .when('/search', {
+    .when('/', {
       templateUrl: 'views/app.html',
     })
     .when('/starred', {
