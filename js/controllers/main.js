@@ -6,26 +6,26 @@ angular.module('app').controller('MainCtrl', function($scope, $http, $location, 
     storage.bind($scope, 'results', {defaultValue:{}});
     storage.bind($scope, 'query');
     var apiBase = "https://itunes.apple.com/search?media=music&callback=JSON_CALLBACK&term=";
-    $scope.search = _.throttle(function() {
-      if (!$scope.query) {
-        $scope.results = [];
-        return;
-      }
-      var query = apiBase + encodeURIComponent($scope.query);
-      $http.jsonp(query).success(function(data) {
-        $scope.results = data.results;
-        var starredIdList = _.collect($scope.starred, function(track) {
-          return track.trackId;
-        });
-        _.forEach($scope.results, function(track) {
-          if (_.contains(starredIdList, track.trackId)) {
-            track.isStarred = true;
-          }
-        });
-      });
-    }, 1000);
 
     _.assign($scope, {
+      search : _.throttle(function() {
+            if (!$scope.query) {
+              $scope.results = [];
+              return;
+            }
+            var query = apiBase + encodeURIComponent($scope.query);
+            $http.jsonp(query).success(function(data) {
+              $scope.results = data.results;
+              var starredIdList = _.collect($scope.starred, function(track) {
+                return track.trackId;
+              });
+              _.forEach($scope.results, function(track) {
+                if (_.contains(starredIdList, track.trackId)) {
+                  track.isStarred = true;
+                }
+              });
+            });
+          }, 1000),
       add : function(addTrack) {
         $scope.starred.push(addTrack);
         $scope.starred = _.uniq($scope.starred, function(track) {
@@ -41,6 +41,10 @@ angular.module('app').controller('MainCtrl', function($scope, $http, $location, 
               addTrack.address = _.collect(components.reverse(), function(component) {
                 return component.long_name;
               }).splice(1,4).join('');
+              addTrack.coords = {
+                lat : position.coords.latitude,
+                lng : position.coords.longitude
+              }
             }
             //TODO sync to server.
             this.add(addTrack);
