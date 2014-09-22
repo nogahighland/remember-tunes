@@ -19,16 +19,13 @@ module.exports = function(grunt) {
                 livereload: LIVE_RELOAD_PORT
             },
             html: {
-                files: ['./**/*.html'],
-                tasks: ['']
+                files: ['views/*.html'],
             },
             js: {
-                files: ['./**/*.js'],
-                tasks: ['']
+                files: ['js/*.js'],
             },
             css: {
-                files: ['./**/*.css'],
-                tasks: ['']
+                files: ['styles/*.css'],
             },
         },
         connect: {
