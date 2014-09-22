@@ -22,6 +22,10 @@ module.exports = function(grunt) {
                 files: ['./**/*.html'],
                 tasks: ['']
             },
+            js: {
+                files: ['./**/*.js'],
+                tasks: ['']
+            },
             css: {
                 files: ['./**/*.css'],
                 tasks: ['']
