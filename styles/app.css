@@ -1,0 +1,11 @@
+.track-panel {
+	background-color: #FDF;
+	margin:5px;
+	padding: 5px
+}
+.track-image {
+	float: left;
+}
+.track-control-box {
+	background-color: #EAE;
+}
