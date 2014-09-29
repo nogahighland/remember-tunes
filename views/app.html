@@ -1,9 +1,9 @@
 <div ng-controller="MainCtrl">
 
-  <div ng-show="isSearchView()">
+  <div ng-show="isSearchView()" id="page-header-control">
     <div class="input-group">
       <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
-      <input type="text" class="form-control" ng-model="query" ng-change="search()" placeholder="track name, artist name, album name..." value="">
+      <input id="search-box" type="text" class="form-control" ng-model="query" ng-change="search()" placeholder="track name, artist name, album name..." value="">
     </div>
     <span class="glyphicon glyphicon-star-empty"></span>:{{getStarredCount()}}
     <h2>Search Results</h2>
@@ -19,44 +19,52 @@
 
   <div id="search-result" class="container">
     <div ng-show="getTracks().length" class="row">
-      <div ng-repeat="result in getTracks()" ng-controller="TrackCtrl" class="col-md-3 track-panel-box">
+      <div ng-repeat="result in getTracks()" ng-controller="TrackCtrl" class="col-md-4 track-panel-box">
 
-        <div class="track-panel">
+        <div class="track-panel-wrapper">
+          <div class="track-panel">
 
-          <div class="track-image">
-            <img ng-src="{{result.artworkUrl100}}" alt="{{result.trackName}}">
-          </div>
+            <div class="track-left-column col-md-4">
+              <div class="track-image">
+                <img ng-src="{{result.artworkUrl100}}" alt="{{result.trackName}}">
+              </div>
 
-          <div class="track-control-box">
-
-            <h4>{{result.trackName}}</h4>
-            <p>by {{result.artistName}}</p>
-
-            <div class="track-control">
-              <!-- player -->
-              <button type="button" ng-click="play()" ng-hide="result.isPlaying" class="btn btn-default">
-                <span class="glyphicon glyphicon-headphones"></span>
-              </button>
-              <button type="button" ng-click="stop()" ng-show="result.isPlaying" class="btn btn-default">
-                <span class="glyphicon glyphicon-stop"></span>
-              </button>
-              <!-- invisible -->
-              <audio src="{{trustSrc(result.isPlaying ? result.previewUrl : '')}}" autoplay></audio>
-
-              <!-- star -->
-              <button type="button" ng-click="star()" ng-hide="result.isStarred" class="btn btn-default">
-                <span class="glyphicon glyphicon-star-empty"></span>
-              </button>
-              <button type="button" ng-click="unStar()" ng-show="result.isStarred" class="btn btn-default">
-                <span class="glyphicon glyphicon-star"></span>
-              </button>
-              <span ng-show="result.isPlaying">
-                <span class="glyphicon glyphicon-volume-up" ></span>
-                <span class="badge">Now Playing</span>
-              </span>
-              <p ng-show="result.address">starred at {{result.address}}</p>
+              <div class="track-control">
+                <!-- star -->
+                <div>                  
+                  <button type="button" ng-click="star()" ng-hide="result.isStarred" class="btn btn-default">
+                    <span class="glyphicon glyphicon-star-empty"></span>
+                  </button>
+                  <button type="button" ng-click="unStar()" ng-show="result.isStarred" class="btn btn-default">
+                    <span class="glyphicon glyphicon-star"></span>
+                  </button>
+                  <!-- player -->
+                  <button type="button" ng-click="play()" ng-hide="result.isPlaying" class="btn btn-default">
+                    <span class="glyphicon glyphicon-headphones"></span>
+                  </button>
+                  <button type="button" ng-click="stop()" ng-show="result.isPlaying" class="btn btn-default">
+                    <span class="glyphicon glyphicon-stop"></span>
+                  </button>
+                  <div class="clear"></div>
+                </div>
+                <div>
+                  <span ng-show="result.isPlaying">
+                    <span class="glyphicon glyphicon-volume-up" ></span>
+                    <span class="badge">Now Playing</span>
+                  </span>
+                </div>
+                <!-- invisible -->
+                <audio src="{{trustSrc(result.isPlaying ? result.previewUrl : '')}}" autoplay></audio>
+              </div>
             </div>
 
+            <div class="track-description-box track-right-column col-md-8">
+              <h4>{{result.trackName}}</h4>
+              <p>by {{result.artistName}}</p>
+            </div>
+            <div class="starred-address" ng-show="result.address">
+              <span>starred at {{result.address}}</span>
+            </div>
           </div>
         </div>
       </div>

@@ -1,11 +1,57 @@
+body {
+	padding: 20px;
+	font-family: Arial, sans-serif;
+	text-shadow: 0 0 0.4px rgba(0, 0, 0, 0.4), 0 1px 1px rgba(255, 255, 255, 0.5);
+}
+#search-box {
+	height:50px;
+	font-size: 20px;
+	padding: 5px;
+}
+.track-panel-wrapper {
+	padding: 3px;
+	box-shadow: 0 0 1px 0.1px rgba(0,0,0,0.4);
+}
+.track-panel-box {
+	padding: 4px;
+}
 .track-panel {
-	background-color: #FDF;
-	margin:5px;
-	padding: 5px
+	background-color: #DDEEFF;
+	margin: 0px;
+	height: 180px;
+	padding: 10px;
+	border-radius: 5px;
 }
 .track-image {
-	float: left;
+	box-shadow: 1px 1px 5px 1px rgba(0,0,0,0.4);
+	width: 100px;
 }
-.track-control-box {
-	background-color: #EAE;
+.track-control {
+	margin-top: 10px;
+}
+.track-control button {
+	float: left;
+	width: 50px;
+}
+.track-left-column {
+	padding-left: 0px;
+}
+.track-right-column {
+	padding: 0px;
+}
+.track-description-box > h3 {
+	margin: 0px;
+}
+.track-description-box > p {
+	text-align: right;
+	color: #887777;
+}
+.starred-address {
+	text-align: right;
+}
+.starred-address span {
+	color: #EEE;
+	background-color:#ABC;
+	padding: 5px 8px;
+	border-radius: 10px;
 }
