@@ -6,12 +6,12 @@
 - **This is a test AngularJs app for personal learning**
 - **Still not deployed anywhere.**
 - This app is usable when you want to save a track when you happen to be reminded of.
-  - Search music by artist name, album name, anything. Find the music are looking for.
-  - To confirm the track is correct, just tap the headphone icon and listen to the preview
-    - This does not work on smartphones.
-  - If the music is all right, tap star icon. It will be saved to localstorage with your current geographical position.
+  - Search music by artist name, album name, anything. Find the music you are looking for.
+  - To confirm the track is correct, just click the headphone icon and listen to the preview.
+    - **Sorry, this still does not work on smartphones.**
+  - If the music is all right, click the star icon. It will be saved to localstorage with your current geographical position.
     - Will be stored on server(some day)
-  - Style is not still perfect, sorry...
+  - Style is not still perfect, sorry.
 
 ### Build
 - Precondition
